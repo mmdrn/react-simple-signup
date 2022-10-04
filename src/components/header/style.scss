@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 50px;
+  .languages {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 85px;
+    .item {
+      margin-bottom: 3px;
+      cursor: pointer;
+      transition: color ease 0.3s;
+      font-weight: 300;
+      line-height: 25px;
+      text-align: right;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &.active {
+        font-weight: 500;
+        color: #7f56da;
+      }
+    }
+  }
+}

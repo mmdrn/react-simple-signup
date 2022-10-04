@@ -1,7 +1,8 @@
 @import "./fontfaces/lato.scss";
+@import "./fontfaces/dana.scss";
 
 html {
-  font: 16px/25px "Lato";
+  font: 16px/25px "Lato", "Dana";
   a {
     display: block;
     text-decoration: none;
@@ -17,7 +18,7 @@ html {
     border: none;
     color: inherit;
     flex-wrap: wrap;
-    font-family: "Lato";
+    font-family: "Lato", "Dana";
   }
 
   .container {
