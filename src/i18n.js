@@ -36,11 +36,11 @@ i18next
               password: {
                 title: "Password",
                 error:
-                  "The Password must have \n&#8226; At least one upper case letter\n&#8226; At least one lower case letter\n&#8226; At least one digit\n&#8226; At least one special character\n&#8226; Minimum eight in length",
+                  "The Password must have: \n&#8226; At least one upper case letter\n&#8226; At least one lower case letter\n&#8226; At least one digit\n&#8226; At least one special character\n&#8226; Minimum eight in length",
               },
               repeatPassword: {
                 title: "Repeat Password",
-                error: "The Repeat Password must be equal to the Password",
+                error: "The Repeat Password must be equal to the Password.",
               },
               address: {
                 title: "Address",
@@ -108,6 +108,59 @@ i18next
               passportNumber: {
                 title: "شماره پاسپورت",
                 error: "فرمت شماره پاسپورت معتبر نمی‌باشد.",
+              },
+            },
+          },
+        },
+      },
+      tr: {
+        translation: {
+          signup: {
+            title: "Üye olmak",
+            subtitle: "Lütfen bilgilerinizi giriniz.",
+            form: {
+              name: {
+                title: "İsim",
+                errors: {
+                  minLength:
+                    "Ad {{value}} karakterden az olamaz.",
+                  maxLength:
+                    "Ad {{value}} karakterden fazla olamaz.",
+                },
+              },
+              family: {
+                title: "Aile",
+                errors: {
+                  minLength:
+                    "Aile {{value}} karakterden az olamaz.",
+                  maxLength:
+                    "Aile {{value}} karakterden fazla olamaz.",
+                },
+              },
+              password: {
+                title: "Şifre",
+                error:
+                  "Şifrenin olması gerekir: \n&#8226; En az bir büyük harf\n&#8226; En az bir küçük harf\n&#8226; En az bir rakam\n&#8226; En az bir özel karakter\n&#8226; En az sekiz uzunluk",
+              },
+              repeatPassword: {
+                title: "Şifreyi tekrar girin",
+                error: "Tekrar Şifresi Şifreye eşit olmalıdır.",
+              },
+              address: {
+                title: "Adres",
+                error: "Adres {{value}} karakterden az olamaz.",
+              },
+              email: {
+                title: "E-posta",
+                error: "E-posta biçimi geçerli değil.",
+              },
+              phoneNumber: {
+                title: "Telefon numarası",
+                error: "Telefon Numarası biçimi geçerli değil.",
+              },
+              passportNumber: {
+                title: "Pasaport numarası",
+                error: "Pasaport Numarası biçimi geçerli değil.",
               },
             },
           },
