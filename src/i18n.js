@@ -33,6 +33,31 @@ i18next
                     "The Family can't be more than {{value}} characters.",
                 },
               },
+              password: {
+                title: "Password",
+                error:
+                  "The Password must have \n&#8226; At least one upper case letter\n&#8226; At least one lower case letter\n&#8226; At least one digit\n&#8226; At least one special character\n&#8226; Minimum eight in length",
+              },
+              repeatPassword: {
+                title: "Repeat Password",
+                error: "The Repeat Password must be equal to the Password",
+              },
+              address: {
+                title: "Address",
+                error: "The address can't be less than {{value}} characters.",
+              },
+              email: {
+                title: "Email",
+                error: "The Email format is not valid.",
+              },
+              phoneNumber: {
+                title: "Phone Number",
+                error: "The Phone Number format is not valid.",
+              },
+              passportNumber: {
+                title: "Passport Number",
+                error: "The Passport Number format is not valid.",
+              },
             },
           },
         },
@@ -58,6 +83,31 @@ i18next
                   maxLength:
                     "نام خانوادگی نمی‌تواند بیشتر از {{value}} حرف باشد.",
                 },
+              },
+              password: {
+                title: "کلمه عبور",
+                error:
+                  "کلمه عبور باید شامل موارد زیر باشد: \n&#8226; حداقل یک حرف بزرگ انگلیسی\n&#8226; حداقل یک حرف کوچک انگلیسی\n&#8226; حداقل یک عدد\n&#8226; حداقل یک کاراکتر ویژه\n&#8226; حداقل دارای ۸ کاراکتر",
+              },
+              repeatPassword: {
+                title: "تکرار کلمه عبور",
+                error: "تکرار کلمه عبور باید برابر با کلمه عبور باشد.",
+              },
+              address: {
+                title: "آدرس",
+                error: "آدرس نمی‌تواند کم‌تر از {{value}} حرف باشد.",
+              },
+              email: {
+                title: "ایمیل",
+                error: "فرمت ایمیل معتبر نمی‌باشد.",
+              },
+              phoneNumber: {
+                title: "شماره موبایل",
+                error: "فرمت شماره موبایل معتبر نمی‌باشد.",
+              },
+              passportNumber: {
+                title: "شماره پاسپورت",
+                error: "فرمت شماره پاسپورت معتبر نمی‌باشد.",
               },
             },
           },

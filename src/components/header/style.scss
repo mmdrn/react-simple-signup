@@ -2,20 +2,41 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 50px;
+
+  &:dir(ltr) {
+    padding-right: 50px;
+  }
+  &:dir(rtl) {
+    padding-left: 50px;
+  }
+
   .languages {
     display: flex;
-    align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
     width: 85px;
+
+    &:dir(ltr) {
+      align-items: flex-start;
+    }
+    &:dir(rtl) {
+      align-items: flex-end;
+    }
+
     .item {
       margin-bottom: 3px;
       cursor: pointer;
       transition: color ease 0.3s;
       font-weight: 300;
       line-height: 25px;
-      text-align: right;
+
+      &:dir(ltr) {
+        text-align: right;
+      }
+      &:dir(rtl) {
+        text-align: left;
+      }
+
       &:last-child {
         margin-bottom: 0;
       }

@@ -6,10 +6,10 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 export default function Signup() {
+  const { t } = useTranslation();
   const [form, updateForm] = useState({
     name: {
       key: "name",
-      title: "Name",
       inputType: "text",
       value: "",
       minLength: 3,
@@ -18,7 +18,6 @@ export default function Signup() {
     },
     family: {
       key: "family",
-      title: "Family",
       inputType: "text",
       value: "",
       minLength: 3,
@@ -27,7 +26,6 @@ export default function Signup() {
     },
     password: {
       key: "password",
-      title: "Password",
       inputType: "password",
       minLength: 8,
       value: "",
@@ -35,14 +33,12 @@ export default function Signup() {
     },
     repeatPassword: {
       key: "repeatPassword",
-      title: "Repeat Password",
       inputType: "password",
       value: "",
       errors: [],
     },
     address: {
       key: "address",
-      title: "Address",
       inputType: "text",
       value: "",
       minLength: 3,
@@ -50,31 +46,27 @@ export default function Signup() {
     },
     email: {
       key: "email",
-      title: "Email",
       inputType: "text",
       value: "",
       errors: [],
     },
     phoneNumber: {
       key: "phoneNumber",
-      title: "Phone Number",
       inputType: "text",
       value: "",
       errors: [],
     },
     passportNumber: {
       key: "passportNumber",
-      title: "Passport Number",
       inputType: "text",
       value: "",
       errors: [],
     },
   });
-  const { t } = useTranslation();
   const currentLanguage = useSelector((state) => state.appSettings.language);
 
   useEffect(() => {
-    console.log(currentLanguage);
+    // formValidation();
   }, [currentLanguage]);
 
   const formControlValidationMessages = (key) => {
@@ -109,7 +101,7 @@ export default function Signup() {
           value={form[key].value}
         />
         <label htmlFor={form[key].key} className="control-title">
-          {form[key].title}
+          {t(`signup.form.${key}.title`)}
         </label>
       </div>
     );
@@ -149,13 +141,17 @@ export default function Signup() {
     // family validation
     if (_form.family.value.length < _form.family.minLength) {
       isValid = false;
-      const errorMessage = `The ${_form.family.title} can't be less than ${_form.family.minLength} characters.`;
+      const errorMessage = t("signup.form.family.errors.minLength", {
+        value: _form.name.minLength,
+      });
       _form.family.errors.push(errorMessage);
     }
 
     if (_form.family.value.length > _form.family.maxLength) {
       isValid = false;
-      const errorMessage = `The ${_form.family.title} can't be more than ${_form.family.maxLength} characters.`;
+      const errorMessage = t("signup.form.family.errors.maxLength", {
+        value: _form.name.maxLength,
+      });
       _form.family.errors.push(errorMessage);
     }
 
@@ -165,21 +161,23 @@ export default function Signup() {
     );
     if (_form.password.value.search(passwordRegex) < 0) {
       isValid = false;
-      const errorMessage = `The ${_form.password.title} must have \n&#8226; At least one upper case letter\n&#8226; At least one lower case letter\n&#8226; At least one digit\n&#8226; At least one special character\n&#8226; Minimum eight in length`;
+      const errorMessage = t("signup.form.password.error");
       _form.password.errors.push(errorMessage);
     }
 
     // repeat password validation
     if (_form.repeatPassword.value !== _form.password.value) {
       isValid = false;
-      const errorMessage = `The ${_form.repeatPassword.title} must be equal to the ${_form.password.title}.`;
+      const errorMessage = t("signup.form.repeatPassword.error");
       _form.repeatPassword.errors.push(errorMessage);
     }
 
     // address validation
     if (_form.address.value.length < _form.address.minLength) {
       isValid = false;
-      const errorMessage = `The ${_form.address.title} can't be less than ${_form.address.minLength} characters.`;
+      const errorMessage = t("signup.form.address.error", {
+        value: _form.address.minLength,
+      });
       _form.address.errors.push(errorMessage);
     }
 
@@ -192,7 +190,7 @@ export default function Signup() {
         )
     ) {
       isValid = false;
-      const errorMessage = `The ${_form.email.title} format is not valid.`;
+      const errorMessage = t("signup.form.email.error");
       _form.email.errors.push(errorMessage);
     }
 
@@ -202,7 +200,7 @@ export default function Signup() {
     );
     if (_form.phoneNumber.value.search(phoneNumberRegex) < 0) {
       isValid = false;
-      const errorMessage = `The ${_form.phoneNumber.title} format is not valid.`;
+      const errorMessage = t("signup.form.phoneNumber.error");
       _form.phoneNumber.errors.push(errorMessage);
     }
 
@@ -210,7 +208,7 @@ export default function Signup() {
     const passportNumberRegex = new RegExp("^(?!^0+$)[a-zA-Z0-9]{3,20}$");
     if (_form.passportNumber.value.search(passportNumberRegex) < 0) {
       isValid = false;
-      const errorMessage = `The ${_form.passportNumber.title} format is not valid.`;
+      const errorMessage = t("signup.form.passportNumber.error");
       _form.passportNumber.errors.push(errorMessage);
     }
 

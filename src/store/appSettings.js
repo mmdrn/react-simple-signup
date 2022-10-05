@@ -3,19 +3,26 @@ import { createSlice } from "@reduxjs/toolkit";
 export const appSettings = createSlice({
   name: "appSettings",
   initialState: {
-    language: "en",
+    language: {
+      key: "en",
+      title: "🇺🇸 English",
+      dir: "ltr",
+    },
     languages: [
       {
         key: "en",
         title: "🇺🇸 English",
+        dir: "ltr",
       },
       {
         key: "fa",
         title: "🇮🇷 Persian",
+        dir: "rtl",
       },
       {
         key: "tr",
         title: "🇹🇷 Türkiye",
+        dir: "ltr",
       },
     ],
   },

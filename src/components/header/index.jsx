@@ -13,7 +13,7 @@ export default function Header() {
 
   const handleChangeLanguage = (language) => {
     dispatch(setLanguage(language));
-    i18n.changeLanguage(language);
+    i18n.changeLanguage(language.key);
   };
 
   return (
@@ -25,11 +25,11 @@ export default function Header() {
       <div className="languages">
         {languages.map((language) => (
           <span
-            onClick={() => handleChangeLanguage(language.key)}
+            onClick={() => handleChangeLanguage(language)}
             disabled={i18n.resolvedLanguage === language.key}
             key={language.key}
             className={`item ${
-              language.key === currentLanguage ? "active" : ""
+              language.key === currentLanguage.key ? "active" : ""
             }`}
           >
             {language.title}
