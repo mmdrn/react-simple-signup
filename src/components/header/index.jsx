@@ -8,8 +8,8 @@ import { useTranslation } from "react-i18next";
 export default function Header() {
   const dispatch = useDispatch();
   const languages = useSelector((state) => state.appSettings.languages);
-  const currentLanguage = useSelector((state) => state.appSettings.language);
   const { i18n } = useTranslation();
+  const currentLanguage = i18n.resolvedLanguage;
 
   const handleChangeLanguage = (language) => {
     dispatch(setLanguage(language));
@@ -29,7 +29,7 @@ export default function Header() {
             disabled={i18n.resolvedLanguage === language.key}
             key={language.key}
             className={`item ${
-              language.key === currentLanguage.key ? "active" : ""
+              language.key === currentLanguage ? "active" : ""
             }`}
           >
             {language.title}

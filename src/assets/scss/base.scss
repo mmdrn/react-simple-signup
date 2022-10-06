@@ -28,4 +28,42 @@ html {
     justify-content: flex-start;
     margin: 0 auto;
   }
+
+  .App {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: calc((100% - 1300px) / 2);
+      height: 100%;
+      background-color: #f1f2f7;
+    }
+
+    &:dir(ltr) {
+      &::before {
+        right: 0;
+      }
+    }
+
+    &:dir(rtl) {
+      &::before {
+        left: 0;
+      }
+    }
+
+    .container {
+      align-items: stretch;
+      min-height: 100vh;
+      .wrapper {
+        width: 50%;
+        padding-top: 50px;
+      }
+
+      .artboard {
+        width: 50%;
+        background-color: #f1f2f7;
+      }
+    }
+  }
 }

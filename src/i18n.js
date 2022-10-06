@@ -6,7 +6,7 @@ i18next
   .use(initReactI18next)
   .use(LanguageDetector)
   .init({
-    debug: true,
+    debug: false,
     fallbackLng: "en",
     resources: {
       en: {
@@ -57,6 +57,13 @@ i18next
               passportNumber: {
                 title: "Passport Number",
                 error: "The Passport Number format is not valid.",
+              },
+              image: {
+                title: "Image",
+                errors: {
+                  required: "The Images is required.",
+                  maximumSize: "Maximum file size: 2MB",
+                },
               },
             },
           },
@@ -109,6 +116,13 @@ i18next
                 title: "شماره پاسپورت",
                 error: "فرمت شماره پاسپورت معتبر نمی‌باشد.",
               },
+              image: {
+                title: "تصویر",
+                errors: {
+                  required: "تصویر اجباری است.",
+                  maximumSize: "نهایت حجم آپلود: ۲ مگابایت",
+                },
+              },
             },
           },
         },
@@ -122,19 +136,15 @@ i18next
               name: {
                 title: "İsim",
                 errors: {
-                  minLength:
-                    "Ad {{value}} karakterden az olamaz.",
-                  maxLength:
-                    "Ad {{value}} karakterden fazla olamaz.",
+                  minLength: "Ad {{value}} karakterden az olamaz.",
+                  maxLength: "Ad {{value}} karakterden fazla olamaz.",
                 },
               },
               family: {
                 title: "Aile",
                 errors: {
-                  minLength:
-                    "Aile {{value}} karakterden az olamaz.",
-                  maxLength:
-                    "Aile {{value}} karakterden fazla olamaz.",
+                  minLength: "Aile {{value}} karakterden az olamaz.",
+                  maxLength: "Aile {{value}} karakterden fazla olamaz.",
                 },
               },
               password: {
@@ -161,6 +171,13 @@ i18next
               passportNumber: {
                 title: "Pasaport numarası",
                 error: "Pasaport Numarası biçimi geçerli değil.",
+              },
+              image: {
+                title: "resim",
+                errors: {
+                  required: "Resim gerekli.",
+                  maximumSize: "Maksimum dosya boyutu: 2MB",
+                },
               },
             },
           },

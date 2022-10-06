@@ -1,11 +1,10 @@
-import "./../../assets/scss/base.scss";
 import "./style.scss";
 import React, { useEffect, useState } from "react";
-import Header from "../../components/header";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 export default function Signup() {
+  document.title = "Diss-co | Signup";
   const { t } = useTranslation();
   const [form, updateForm] = useState({
     name: {
@@ -62,55 +61,39 @@ export default function Signup() {
       value: "",
       errors: [],
     },
+    image: {
+      key: "image",
+      inputType: "file",
+      accept: "image/png, image/jpeg",
+      maxSize: 2, //MB
+      value: "",
+      errors: [],
+    },
   });
   const currentLanguage = useSelector((state) => state.appSettings.language);
 
   useEffect(() => {
-    // formValidation();
+    const _form = Object.assign({}, form);
+    for (const item in _form) {
+      _form[item].errors = [];
+      _form[item].value = "";
+    }
+
+    updateForm(_form);
+    // eslint-disable-next-line
   }, [currentLanguage]);
 
-  const formControlValidationMessages = (key) => {
-    return (
-      <div className="validations">
-        {form[key].errors.map((error) => (
-          <p
-            key={key}
-            className="validation-item"
-            dangerouslySetInnerHTML={{ __html: error }}
-          />
-        ))}
-      </div>
-    );
-  };
-
-  const formControl = (key) => {
-    return (
-      <div
-        className={`form-control ${
-          form[key].errors.length > 0 ? "has-error" : ""
-        }`}
-        key={key}
-      >
-        {formControlValidationMessages(key)}
-        <input
-          type={form[key].inputType}
-          id={form[key].key}
-          className="control"
-          autoComplete="off"
-          onChange={(e) => handleInputChange(e, form[key].key)}
-          value={form[key].value}
-        />
-        <label htmlFor={form[key].key} className="control-title">
-          {t(`signup.form.${key}.title`)}
-        </label>
-      </div>
-    );
-  };
-
   const handleInputChange = (event, key) => {
-    const oldForm = Object.assign({}, form);
-    oldForm[key].value = event.target.value;
-    updateForm(oldForm);
+    const _form = Object.assign({}, form);
+
+    if (form[key].inputType !== "file") {
+      _form[key].value = event.target.value;
+    } else {
+      if (event.target.files.length > 0) {
+        _form[key].value = event.target.files[0];
+      }
+    }
+    updateForm(_form);
   };
 
   const formValidation = () => {
@@ -212,6 +195,25 @@ export default function Signup() {
       _form.passportNumber.errors.push(errorMessage);
     }
 
+    // image validation
+    if (!_form.image.value) {
+      isValid = false;
+      const errorMessage = t("signup.form.image.errors.required");
+      _form.image.errors.push(errorMessage);
+    } else {
+      const bytes = require("bytes");
+      if (
+        _form.image.value &&
+        _form.image.value.size &&
+        parseFloat(bytes(_form.image.value.size, { unit: "mb" })) >
+          _form.image.maxSize
+      ) {
+        isValid = false;
+        const errorMessage = t("signup.form.image.errors.maximumSize");
+        _form.image.errors.push(errorMessage);
+      }
+    }
+
     updateForm(_form);
 
     return isValid;
@@ -221,24 +223,80 @@ export default function Signup() {
     if (!formValidation()) return false;
   };
 
-  return (
-    <div className="signin-page">
-      <div className="container">
-        <div className="wrapper">
-          <Header />
-          <div className="main-wrapper">
-            <h1 className="title">{t("signup.title")}</h1>
-            <p className="subtitle">{t("signup.subtitle")}</p>
+  const handleInput = (key) => {
+    if (form[key].inputType !== "file") {
+      return (
+        <input
+          type={form[key].inputType}
+          id={form[key].key}
+          className="control"
+          autoComplete="off"
+          onChange={(e) => handleInputChange(e, form[key].key)}
+          value={form[key].value}
+        />
+      );
+    } else {
+      return (
+        <label className="file-selector-wrapper">
+          <span className="selector" htmlFor={form[key].key}>
+            Select
+          </span>
+          <span className="file-name">{form[key].value.name}</span>
+          <input
+            type={form[key].inputType}
+            id={form[key].key}
+            className="control"
+            autoComplete="off"
+            accept={form[key].accept}
+            onChange={(e) => handleInputChange(e, form[key].key)}
+          />
+        </label>
+      );
+    }
+  };
 
-            <div className="form">
-              {Object.keys(form).map((key) => formControl(key))}
-              <button type="submit" className="button" onClick={submit}>
-                Sign up
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="artboard"></div>
+  const formControl = (key) => {
+    return (
+      <div
+        className={`form-control ${
+          (form[key].errors.length > 0 ? "has-error" : "",
+          form[key].inputType === "file" ? "file" : "")
+        }`}
+        key={key}
+      >
+        {formControlValidationMessages(key)}
+        {handleInput(key)}
+        <label htmlFor={form[key].key} className="control-title">
+          {t(`signup.form.${key}.title`)}
+        </label>
+      </div>
+    );
+  };
+
+  const formControlValidationMessages = (key) => {
+    return (
+      <div className="validations">
+        {form[key].errors.map((error) => (
+          <p
+            key={key}
+            className="validation-item"
+            dangerouslySetInnerHTML={{ __html: error }}
+          />
+        ))}
+      </div>
+    );
+  };
+
+  return (
+    <div className="main-wrapper">
+      <h1 className="title">{t("signup.title")}</h1>
+      <p className="subtitle">{t("signup.subtitle")}</p>
+
+      <div className="form">
+        {Object.keys(form).map((key) => formControl(key))}
+        <button type="submit" className="button" onClick={submit}>
+          Sign up
+        </button>
       </div>
     </div>
   );
