@@ -1,6 +1,8 @@
+import "./style.scss";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   document.title = "Diss-co | Login";
@@ -117,15 +119,18 @@ export default function Login() {
   };
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper login-page">
       <h1 className="title">{t("login.title")}</h1>
       <p className="subtitle">{t("login.subtitle")}</p>
 
       <div className="form">
         {Object.keys(form).map((key) => formControl(key))}
         <button type="submit" className="button" onClick={submit}>
-          Sign up
+          {t("login.loginButton")}
         </button>
+        <Link to="/signup" className="link">
+          {t("login.signupLink")}
+        </Link>
       </div>
     </div>
   );

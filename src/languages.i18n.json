@@ -4,6 +4,8 @@
             "signup": {
                 "title": "Sign up",
                 "subtitle": "Please enter your details.",
+                "signupButton": "Sign up",
+                "loginLink": "Or login into your account",
                 "form": {
                     "name": {
                         "title": "Name",
@@ -55,6 +57,8 @@
             "login": {
                 "title": "Welcome back",
                 "subtitle": "Please enter your Username and Password.",
+                "loginButton": "Login",
+                "signupLink": "Or create new account",
                 "form": {
                     "username": {
                         "title": "Username(Email or Phone number)",
@@ -75,6 +79,8 @@
             "signup": {
                 "title": "ایجاد حساب کاربری",
                 "subtitle": "لطفا اطلاعات خود را وارد کنید.",
+                "signupButton": "ثبت نام",
+                "loginLink": "یا وارد حساب کاربری خود شوید",
                 "form": {
                     "name": {
                         "title": "نام",
@@ -126,6 +132,8 @@
             "login": {
                 "title": "خوش آمدید",
                 "subtitle": "لطفا نام‌کاربری و کلمه عبور خود را وارد کنید.",
+                "loginButton": "ورود",
+                "signupLink": "یا ایجاد حساب کاربری جدید",
                 "form": {
                     "username": {
                         "title": "نام کاربری (شماره موبایل یا ایمیل)",
@@ -146,6 +154,8 @@
             "signup": {
                 "title": "Üye olmak",
                 "subtitle": "Lütfen bilgilerinizi giriniz.",
+                "signupButton": "üye olmak",
+                "loginLink": "Veya hesabınıza giriş yapın",
                 "form": {
                     "name": {
                         "title": "İsim",
@@ -197,6 +207,8 @@
             "login": {
                 "title": "Tekrar hoşgeldiniz",
                 "subtitle": "Lütfen kullanıcı adınızı ve şifrenizi giriniz.",
+                "loginButton": "Giriş yapmak",
+                "signupLink": "Veya yeni hesap oluştur",
                 "form": {
                     "username": {
                         "title": "Kullanıcı adı(E-posta veya Telefon numarası)",

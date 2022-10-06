@@ -2,6 +2,7 @@ import "./style.scss";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Signup() {
   document.title = "Diss-co | Signup";
@@ -288,15 +289,18 @@ export default function Signup() {
   };
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper signin-page">
       <h1 className="title">{t("signup.title")}</h1>
       <p className="subtitle">{t("signup.subtitle")}</p>
 
       <div className="form">
         {Object.keys(form).map((key) => formControl(key))}
         <button type="submit" className="button" onClick={submit}>
-          Sign up
+          {t("signup.signupButton")}
         </button>
+        <Link to="/login" className="link">
+          {t("signup.loginLink")}
+        </Link>
       </div>
     </div>
   );
