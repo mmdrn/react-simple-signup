@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Login as LoginRequest } from "./../../api/auth.api";
 import { toast } from "react-toastify";
+import FormControl from "../../components/FormControl";
 
 export default function Login() {
   document.title = "Diss-co | Login";
@@ -39,9 +40,9 @@ export default function Login() {
     // eslint-disable-next-line
   }, [currentLanguage]);
 
-  const handleInputChange = (event, key) => {
+  const handleInputChange = (value, key) => {
     const _form = Object.assign({}, form);
-    _form[key].value = event.target.value;
+    _form[key].value = value;
 
     updateForm(_form);
   };
@@ -116,26 +117,29 @@ export default function Login() {
 
   const formControl = (key) => {
     return (
-      <div
-        className={`form-control ${
-          (form[key].errors.length > 0 ? "has-error" : "",
-          form[key].inputType === "file" ? "file" : "")
-        }`}
-        key={key}
-      >
-        {formControlValidationMessages(key)}
-        <input
-          type={form[key].inputType}
-          id={form[key].key}
-          className="control"
-          autoComplete="off"
-          onChange={(e) => handleInputChange(e, form[key].key)}
-          value={form[key].value}
-        />
-        <label htmlFor={form[key].key} className="control-title">
-          {t(`login.form.${key}.title`)}
-        </label>
-      </div>
+      <>
+        <FormControl data={form[key]} onHandleChange={handleInputChange} />
+        <div
+          className={`form-control ${
+            (form[key].errors.length > 0 ? "has-error" : "",
+            form[key].inputType === "file" ? "file" : "")
+          }`}
+          key={key}
+        >
+          {formControlValidationMessages(key)}
+          <input
+            type={form[key].inputType}
+            id={form[key].key}
+            className="control"
+            autoComplete="off"
+            onChange={(e) => handleInputChange(e.target.value, form[key].key)}
+            value={form[key].value}
+          />
+          <label htmlFor={form[key].key} className="control-title">
+            {t(`login.form.${key}.title`)}
+          </label>
+        </div>
+      </>
     );
   };
 
