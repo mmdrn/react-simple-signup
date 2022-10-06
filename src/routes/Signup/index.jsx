@@ -2,11 +2,15 @@ import "./style.scss";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Signup as SignupRequest } from "./../../api/auth.api";
+import { toast } from "react-toastify";
+import { fileToBase64 } from "./../../helpers";
 
 export default function Signup() {
   document.title = "Diss-co | Signup";
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [form, updateForm] = useState({
     name: {
       key: "name",
@@ -220,8 +224,41 @@ export default function Signup() {
     return isValid;
   };
 
-  const submit = () => {
+  const submit = async () => {
     if (!formValidation()) return false;
+
+    const data = {
+      name: form.name.value,
+      family: form.family.value,
+      password: form.password.value,
+      address: form.address.value,
+      email: form.email.value,
+      phone: form.phoneNumber.value,
+      passport_no: form.passportNumber.value,
+      image: await fileToBase64(form.image.value),
+    };
+
+    try {
+      const response = await SignupRequest(data);
+
+      if (response.status) {
+        toast.success(response.message.description, {
+          autoClose: 10000,
+        });
+        navigate("/login");
+        return true;
+      } else {
+        toast.error(response.message.description, {
+          autoClose: 10000,
+        });
+        navigate("/login");
+        return false;
+      }
+    } catch (error) {
+      toast.error(t("signup.unexpectedError"), {
+        autoClose: 10000,
+      });
+    }
   };
 
   const handleInput = (key) => {

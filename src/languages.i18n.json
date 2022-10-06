@@ -6,6 +6,7 @@
                 "subtitle": "Please enter your details.",
                 "signupButton": "Sign up",
                 "loginLink": "Or login into your account",
+                "unexpectedError": "An unexpected error happened.",
                 "form": {
                     "name": {
                         "title": "Name",
@@ -59,12 +60,11 @@
                 "subtitle": "Please enter your Username and Password.",
                 "loginButton": "Login",
                 "signupLink": "Or create new account",
+                "unexpectedError": "An unexpected error happened.",
                 "form": {
                     "username": {
                         "title": "Username(Email or Phone number)",
-                        "errors": {
-                            "minLength": "The Username can't be less than {{value}} characters."
-                        }
+                        "error": "The Username format is invalid."
                     },
                     "password": {
                         "title": "Password",
@@ -81,6 +81,7 @@
                 "subtitle": "لطفا اطلاعات خود را وارد کنید.",
                 "signupButton": "ثبت نام",
                 "loginLink": "یا وارد حساب کاربری خود شوید",
+                "unexpectedError": "خطای غیر منتظره رخ داده است.",
                 "form": {
                     "name": {
                         "title": "نام",
@@ -134,12 +135,11 @@
                 "subtitle": "لطفا نام‌کاربری و کلمه عبور خود را وارد کنید.",
                 "loginButton": "ورود",
                 "signupLink": "یا ایجاد حساب کاربری جدید",
+                "unexpectedError": "خطای غیر منتظره رخ داده است.",
                 "form": {
                     "username": {
                         "title": "نام کاربری (شماره موبایل یا ایمیل)",
-                        "errors": {
-                            "minLength": "نام کاربری نمی‌تواند کم‌تر از {{value}} حرف باشد."
-                        }
+                        "error": "فرمت نام کاربری معتبر نمی‌باشد."
                     },
                     "password": {
                         "title": "کلمه عبور",
@@ -156,6 +156,7 @@
                 "subtitle": "Lütfen bilgilerinizi giriniz.",
                 "signupButton": "üye olmak",
                 "loginLink": "Veya hesabınıza giriş yapın",
+                "unexpectedError": "Beklenmeyen bir hata oluştu.",
                 "form": {
                     "name": {
                         "title": "İsim",
@@ -209,12 +210,11 @@
                 "subtitle": "Lütfen kullanıcı adınızı ve şifrenizi giriniz.",
                 "loginButton": "Giriş yapmak",
                 "signupLink": "Veya yeni hesap oluştur",
+                "unexpectedError": "Beklenmeyen bir hata oluştu.",
                 "form": {
                     "username": {
                         "title": "Kullanıcı adı(E-posta veya Telefon numarası)",
-                        "errors": {
-                            "minLength": "Kullanıcı adı {{value}} karakterden az olamaz."
-                        }
+                        "error": "Kullanıcı adı biçimi geçersiz."
                     },
                     "password": {
                         "title": "Şifre",
