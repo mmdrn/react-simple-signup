@@ -17,7 +17,7 @@ export default function Header() {
   };
 
   return (
-    <header className="header">
+    <header className="main-header">
       <figure className="logo">
         <img src={logo} alt="diss-co logo" />
       </figure>
