@@ -51,6 +51,22 @@
                         }
                     }
                 }
+            },
+            "login": {
+                "title": "Welcome back",
+                "subtitle": "Please enter your Username and Password.",
+                "form": {
+                    "username": {
+                        "title": "Username(Email or Phone number)",
+                        "errors": {
+                            "minLength": "The Username can't be less than {{value}} characters."
+                        }
+                    },
+                    "password": {
+                        "title": "Password",
+                        "error": "The Password can't be less than {{value}} characters."
+                    }
+                }
             }
         }
     },
@@ -106,6 +122,22 @@
                         }
                     }
                 }
+            },
+            "login": {
+                "title": "خوش آمدید",
+                "subtitle": "لطفا نام‌کاربری و کلمه عبور خود را وارد کنید.",
+                "form": {
+                    "username": {
+                        "title": "نام کاربری (شماره موبایل یا ایمیل)",
+                        "errors": {
+                            "minLength": "نام کاربری نمی‌تواند کم‌تر از {{value}} حرف باشد."
+                        }
+                    },
+                    "password": {
+                        "title": "کلمه عبور",
+                        "error": "کلمه عبور نمی‌تواند کم‌تر از {{value}} حرف باشد."
+                    }
+                }
             }
         }
     },
@@ -159,6 +191,22 @@
                             "required": "Resim gerekli.",
                             "maximumSize": "Maksimum dosya boyutu: 2MB"
                         }
+                    }
+                }
+            },
+            "login": {
+                "title": "Tekrar hoşgeldiniz",
+                "subtitle": "Lütfen kullanıcı adınızı ve şifrenizi giriniz.",
+                "form": {
+                    "username": {
+                        "title": "Kullanıcı adı(E-posta veya Telefon numarası)",
+                        "errors": {
+                            "minLength": "Kullanıcı adı {{value}} karakterden az olamaz."
+                        }
+                    },
+                    "password": {
+                        "title": "Şifre",
+                        "error": "Şifre {{value}} karakterden az olamaz."
                     }
                 }
             }
