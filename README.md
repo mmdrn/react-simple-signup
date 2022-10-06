@@ -1,3 +1,25 @@
+# Deploy with docker
+
+This project can run with docker and deploy in any continer base orchestration. You can build and run the react application in docker.
+
+How to build and run
+====================
+
+1. At first you can copy `.env.example` to `.env`
+2. According to your environment you should change variable of **.env** file
+3. Then you should run below command to build and run the react application in docker
+
+```bash
+docker-compose up -d --build
+```
+
+**Note:** This web server run on port 3000. If you want to run on any port you can use `UI_HTTP_PORT` to run your arbitrary port
+
+```bash
+### Run continer on port 3080
+UI_HTTP_PORT=3080 docker-compose up -d --build
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
