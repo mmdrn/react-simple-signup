@@ -123,7 +123,12 @@ export default function Login() {
       <div className="form">
         {Object.keys(form).map((key) => {
           return (
-            <FormControl data={form[key]} title={t(`login.form.${key}.title`)} onHandleChange={handleInputChange} />
+            <FormControl
+              data={form[key]}
+              title={t(`login.form.${key}.title`)}
+              onHandleChange={handleInputChange}
+              key={key}
+            />
           );
         })}
         <button type="submit" className="button" onClick={submit}>

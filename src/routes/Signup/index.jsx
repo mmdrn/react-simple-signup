@@ -268,6 +268,7 @@ export default function Signup() {
               data={form[key]}
               title={t(`signup.form.${key}.title`)}
               onHandleChange={handleInputChange}
+              key={key}
             />
           );
         })}
