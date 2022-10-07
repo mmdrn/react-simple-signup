@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Signup as SignupRequest } from "./../../api/auth.api";
 import { toast } from "react-toastify";
 import { fileToBase64 } from "./../../helpers";
+import FormControl from "../../components/FormControl";
 
 export default function Signup() {
   document.title = "Diss-co | Signup";
@@ -88,16 +89,10 @@ export default function Signup() {
     // eslint-disable-next-line
   }, [currentLanguage]);
 
-  const handleInputChange = (event, key) => {
+  const handleInputChange = (value, key) => {
     const _form = Object.assign({}, form);
+    _form[key].value = value;
 
-    if (form[key].inputType !== "file") {
-      _form[key].value = event.target.value;
-    } else {
-      if (event.target.files.length > 0) {
-        _form[key].value = event.target.files[0];
-      }
-    }
     updateForm(_form);
   };
 
@@ -261,77 +256,21 @@ export default function Signup() {
     }
   };
 
-  const handleInput = (key) => {
-    if (form[key].inputType !== "file") {
-      return (
-        <input
-          type={form[key].inputType}
-          id={form[key].key}
-          className="control"
-          autoComplete="off"
-          onChange={(e) => handleInputChange(e, form[key].key)}
-          value={form[key].value}
-        />
-      );
-    } else {
-      return (
-        <label className="file-selector-wrapper">
-          <span className="selector" htmlFor={form[key].key}>
-            Select
-          </span>
-          <span className="file-name">{form[key].value.name}</span>
-          <input
-            type={form[key].inputType}
-            id={form[key].key}
-            className="control"
-            autoComplete="off"
-            accept={form[key].accept}
-            onChange={(e) => handleInputChange(e, form[key].key)}
-          />
-        </label>
-      );
-    }
-  };
-
-  const formControl = (key) => {
-    return (
-      <div
-        className={`form-control ${
-          (form[key].errors.length > 0 ? "has-error" : "",
-          form[key].inputType === "file" ? "file" : "")
-        }`}
-        key={key}
-      >
-        {formControlValidationMessages(key)}
-        {handleInput(key)}
-        <label htmlFor={form[key].key} className="control-title">
-          {t(`signup.form.${key}.title`)}
-        </label>
-      </div>
-    );
-  };
-
-  const formControlValidationMessages = (key) => {
-    return (
-      <div className="validations">
-        {form[key].errors.map((error) => (
-          <p
-            key={key}
-            className="validation-item"
-            dangerouslySetInnerHTML={{ __html: error }}
-          />
-        ))}
-      </div>
-    );
-  };
-
   return (
     <div className="main-wrapper signin-page">
       <h1 className="title">{t("signup.title")}</h1>
       <p className="subtitle">{t("signup.subtitle")}</p>
 
       <div className="form">
-        {Object.keys(form).map((key) => formControl(key))}
+        {Object.keys(form).map((key) => {
+          return (
+            <FormControl
+              data={form[key]}
+              title={t(`signup.form.${key}.title`)}
+              onHandleChange={handleInputChange}
+            />
+          );
+        })}
         <button type="submit" className="button" onClick={submit}>
           {t("signup.signupButton")}
         </button>

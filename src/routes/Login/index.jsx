@@ -115,55 +115,17 @@ export default function Login() {
     }
   };
 
-  const formControl = (key) => {
-    return (
-      <>
-        <FormControl data={form[key]} onHandleChange={handleInputChange} />
-        <div
-          className={`form-control ${
-            (form[key].errors.length > 0 ? "has-error" : "",
-            form[key].inputType === "file" ? "file" : "")
-          }`}
-          key={key}
-        >
-          {formControlValidationMessages(key)}
-          <input
-            type={form[key].inputType}
-            id={form[key].key}
-            className="control"
-            autoComplete="off"
-            onChange={(e) => handleInputChange(e.target.value, form[key].key)}
-            value={form[key].value}
-          />
-          <label htmlFor={form[key].key} className="control-title">
-            {t(`login.form.${key}.title`)}
-          </label>
-        </div>
-      </>
-    );
-  };
-
-  const formControlValidationMessages = (key) => {
-    return (
-      <div className="validations">
-        {form[key].errors.map((error) => (
-          <p
-            key={key}
-            className="validation-item"
-            dangerouslySetInnerHTML={{ __html: error }}
-          />
-        ))}
-      </div>
-    );
-  };
-
   return (
     <div className="main-wrapper login-page">
       <h1 className="title">{t("login.title")}</h1>
       <p className="subtitle">{t("login.subtitle")}</p>
 
       <div className="form">
-        {Object.keys(form).map((key) => formControl(key))}
+        {Object.keys(form).map((key) => {
+          return (
+            <FormControl data={form[key]} title={t(`login.form.${key}.title`)} onHandleChange={handleInputChange} />
+          );
+        })}
         <button type="submit" className="button" onClick={submit}>
           {t("login.loginButton")}
         </button>

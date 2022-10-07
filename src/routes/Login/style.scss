@@ -159,3 +159,20 @@
     }
   }
 }
+
+
+// breakpoints
+@media screen and (min-width: 320px) and (max-width: 479px) {
+  .main-wrapper {
+    &.login-page {
+      padding: 50px 0 100px 0;
+    }
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 599px) {
+  .main-wrapper {
+    &.login-page {
+      padding: 50px 0 100px 0;
+    }
+  }
+}
